@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .big-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+        }
+
+        .small-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 5px;
+        }
+
+        .cell {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            width: 300px; /* Defina o tamanho desejado para o tabuleiro */
+            height: 300px; /* Defina o tamanho desejado para o tabuleiro */
+            background-color: #eee;
+        }
+
+        .button {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size: 20px;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: large;
+            font-size: 70px;
+        }
+        .botãomenor{
+            font-size: 70px;
+        }
+        #painel{
+            position: absolute;
+            top: 64px;
+            left: 937px;
+        }
+        .sombra{
+            position: absolute;
+            height: 300px;
+            width: 300px;
+        }
+        #sombraCell1{           
+            top: 8px;
+            left: 9px;       
+        }
+        #sombraCell2{           
+            top: 8px;
+            left: 314px;       
+        }
+        #sombraCell3{           
+            top: 8px;
+            left: 618px;       
+        }
+        #sombraCell4{           
+            top: 311px;
+            left: 9px;       
+        }
+        #sombraCell5{           
+            top: 311px;
+            left: 314px;        
+        }
+        #sombraCell6{           
+            top: 311px;
+            left: 618px;      
+        }
+        #sombraCell7{           
+            top: 618px;
+            left: 9px;       
+        }
+        #sombraCell8{           
+            top: 618px;
+            left: 314px;        
+        }
+        #sombraCell9{           
+            top: 618px;
+            left: 618px;     
+        }
+        #playershow{
+            font-size: 70px;
+        }
+    </style>
+</head>
+<body>
+    <div class="big-board">
+        <!-- Cria o tabuleiro grande com células menores que contêm tabuleiros menores com botões -->
+        <div class="small-board">
+            <div class="cell">
+                <button id="cell1bt1" onclick="jogar(1,1)" class="botãomenor"></button>
+                <button id="cell1bt2" onclick="jogar(1,2)" class="botãomenor"></button>
+                <button id="cell1bt3" onclick="jogar(1,3)" class="botãomenor"></button>
+                <button id="cell1bt4" onclick="jogar(1,4)" class="botãomenor"></button>
+                <button id="cell1bt5" onclick="jogar(1,5)" class="botãomenor"></button>
+                <button id="cell1bt6" onclick="jogar(1,6)" class="botãomenor"></button>
+                <button id="cell1bt7" onclick="jogar(1,7)" class="botãomenor"></button>
+                <button id="cell1bt8" onclick="jogar(1,8)" class="botãomenor"></button>
+                <button id="cell1bt9" onclick="jogar(1,9)" class="botãomenor"></button>
+            </div>
+            <div class="cell">
+                <button id="cell2bt1" onclick="jogar(2,1)" class="botãomenor"></button>
+                <button id="cell2bt2" onclick="jogar(2,2)" class="botãomenor"></button>
+                <button id="cell2bt3" onclick="jogar(2,3)" class="botãomenor"></button>
+                <button id="cell2bt4" onclick="jogar(2,4)" class="botãomenor"></button>
+                <button id="cell2bt5" onclick="jogar(2,5)" class="botãomenor"></button>
+                <button id="cell2bt6" onclick="jogar(2,6)" class="botãomenor"></button>
+                <button id="cell2bt7" onclick="jogar(2,7)" class="botãomenor"></button>
+                <button id="cell2bt8" onclick="jogar(2,8)" class="botãomenor"></button>
+                <button id="cell2bt9" onclick="jogar(2,9)" class="botãomenor"></button>
+            </div>
+            <div class="cell">
+                <button id="cell3bt1" onclick="jogar(3,1)" class="botãomenor"></button>
+                <button id="cell3bt2" onclick="jogar(3,2)" class="botãomenor"></button>
+                <button id="cell3bt3" onclick="jogar(3,3)" class="botãomenor"></button>
+                <button id="cell3bt4" onclick="jogar(3,4)" class="botãomenor"></button>
+                <button id="cell3bt5" onclick="jogar(3,5)" class="botãomenor"></button>
+                <button id="cell3bt6" onclick="jogar(3,6)" class="botãomenor"></button>
+                <button id="cell3bt7" onclick="jogar(3,7)" class="botãomenor"></button>
+                <button id="cell3bt8" onclick="jogar(3,8)" class="botãomenor"></button>
+                <button id="cell3bt9" onclick="jogar(3,9)" class="botãomenor"></button>
+            </div>
+            <div class="cell">
+                <button id="cell4bt1" onclick="jogar(4,1)" class="botãomenor"></button>
+                <button id="cell4bt2" onclick="jogar(4,2)" class="botãomenor"></button>
+                <button id="cell4bt3" onclick="jogar(4,3)" class="botãomenor"></button>
+                <button id="cell4bt4" onclick="jogar(4,4)" class="botãomenor"></button>
+                <button id="cell4bt5" onclick="jogar(4,5)" class="botãomenor"></button>
+                <button id="cell4bt6" onclick="jogar(4,6)" class="botãomenor"></button>
+                <button id="cell4bt7" onclick="jogar(4,7)" class="botãomenor"></button>
+                <button id="cell4bt8" onclick="jogar(4,8)" class="botãomenor"></button>
+                <button id="cell4bt9" onclick="jogar(4,9)" class="botãomenor"></button>
+            </div>
+            <div class="cell">
+                <button id="cell5bt1" onclick="jogar(5,1)" class="botãomenor"></button>
+                <button id="cell5bt2" onclick="jogar(5,2)" class="botãomenor"></button>
+                <button id="cell5bt3" onclick="jogar(5,3)" class="botãomenor"></button>
+                <button id="cell5bt4" onclick="jogar(5,4)" class="botãomenor"></button>
+                <button id="cell5bt5" onclick="jogar(5,5)" class="botãomenor"></button>
+                <button id="cell5bt6" onclick="jogar(5,6)" class="botãomenor"></button>
+                <button id="cell5bt7" onclick="jogar(5,7)" class="botãomenor"></button>
+                <button id="cell5bt8" onclick="jogar(5,8)" class="botãomenor"></button>
+                <button id="cell5bt9" onclick="jogar(5,9)" class="botãomenor"></button>
+            </div>
+            <div class="cell">
+                <button id="cell6bt1" onclick="jogar(6,1)" class="botãomenor"></button>
+                <button id="cell6bt2" onclick="jogar(6,2)" class="botãomenor"></button>
+                <button id="cell6bt3" onclick="jogar(6,3)" class="botãomenor"></button>
+                <button id="cell6bt4" onclick="jogar(6,4)" class="botãomenor"></button>
+                <button id="cell6bt5" onclick="jogar(6,5)" class="botãomenor"></button>
+                <button id="cell6bt6" onclick="jogar(6,6)" class="botãomenor"></button>
+                <button id="cell6bt7" onclick="jogar(6,7)" class="botãomenor"></button>
+                <button id="cell6bt8" onclick="jogar(6,8)" class="botãomenor"></button>
+                <button id="cell6bt9" onclick="jogar(6,9)" class="botãomenor"></button>
+            </div>
+            <div class="cell">
+                <button id="cell7bt1" onclick="jogar(7,1)" class="botãomenor"></button>
+                <button id="cell7bt2" onclick="jogar(7,2)" class="botãomenor"></button>
+                <button id="cell7bt3" onclick="jogar(7,3)" class="botãomenor"></button>
+                <button id="cell7bt4" onclick="jogar(7,4)" class="botãomenor"></button>
+                <button id="cell7bt5" onclick="jogar(7,5)" class="botãomenor"></button>
+                <button id="cell7bt6" onclick="jogar(7,6)" class="botãomenor"></button>
+                <button id="cell7bt7" onclick="jogar(7,7)" class="botãomenor"></button>
+                <button id="cell7bt8" onclick="jogar(7,8)" class="botãomenor"></button>
+                <button id="cell7bt9" onclick="jogar(7,9)" class="botãomenor"></button>
+            </div>
+            <div class="cell">
+                <button id="cell8bt1" onclick="jogar(8,1)" class="botãomenor"></button>
+                <button id="cell8bt2" onclick="jogar(8,2)" class="botãomenor"></button>
+                <button id="cell8bt3" onclick="jogar(8,3)" class="botãomenor"></button>
+                <button id="cell8bt4" onclick="jogar(8,4)" class="botãomenor"></button>
+                <button id="cell8bt5" onclick="jogar(8,5)" class="botãomenor"></button>
+                <button id="cell8bt6" onclick="jogar(8,6)" class="botãomenor"></button>
+                <button id="cell8bt7" onclick="jogar(8,7)" class="botãomenor"></button>
+                <button id="cell8bt8" onclick="jogar(8,8)" class="botãomenor"></button>
+                <button id="cell8bt9" onclick="jogar(8,9)" class="botãomenor"></button>
+            </div>
+            <div class="cell">
+                <button id="cell9bt1" onclick="jogar(9,1)" class="botãomenor"></button>
+                <button id="cell9bt2" onclick="jogar(9,2)" class="botãomenor"></button>
+                <button id="cell9bt3" onclick="jogar(9,3)" class="botãomenor"></button>
+                <button id="cell9bt4" onclick="jogar(9,4)" class="botãomenor"></button>
+                <button id="cell9bt5" onclick="jogar(9,5)" class="botãomenor"></button>
+                <button id="cell9bt6" onclick="jogar(9,6)" class="botãomenor"></button>
+                <button id="cell9bt7" onclick="jogar(9,7)" class="botãomenor"></button>
+                <button id="cell9bt8" onclick="jogar(9,8)" class="botãomenor"></button>
+                <button id="cell9bt9" onclick="jogar(9,9)" class="botãomenor"></button>
+            </div>
+        </div>
+  
+    </div>
+
+<img class="sombra" id="sombraCell1" src="img/sombra.png" alt="" style="visibility: hidden;">
+<img class="sombra" id="sombraCell2" src="img/sombra.png" alt="" style="visibility: hidden;">
+<img class="sombra" id="sombraCell3" src="img/sombra.png" alt="" style="visibility: hidden;">
+<img class="sombra" id="sombraCell4" src="img/sombra.png" alt="" style="visibility: hidden;">
+<img class="sombra" id="sombraCell5" src="img/sombra.png" alt="" style="visibility: hidden;">
+<img class="sombra" id="sombraCell6" src="img/sombra.png" alt="" style="visibility: hidden;">
+<img class="sombra" id="sombraCell7" src="img/sombra.png" alt="" style="visibility: hidden;">
+<img class="sombra" id="sombraCell8" src="img/sombra.png" alt="" style="visibility: hidden;">
+<img class="sombra" id="sombraCell9" src="img/sombra.png" alt="" style="visibility: hidden;">
+
+    <div id="painel">
+       <h1>VEZ DO </h1> <span id="playershow"></span>
+    </div>
+</body>
+<script>
+
+    let playerAtual = "X"
+    document.getElementById("playershow").textContent = playerAtual;
+
+var matrizJogos = [
+  ["", "", ""],
+  ["", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
+  ["", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
+  ["", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
+  ["", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
+  ["", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
+  ["", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
+  ["", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
+  ["", "#", "#", "#", "#", "#", "#", "#", "#", "#"],
+  ["", "#", "#", "#", "#", "#", "#", "#", "#", "#"]
+];
+var matrizGeral = ["", "#", "#", "#", "#", "#", "#", "#", "#", "#"];
+
+function ganhouCelula(celula) {
+
+
+    if(matrizJogos[celula][1] != "#" && matrizJogos[celula][2] != "#" && matrizJogos[celula][3] != "#" && matrizJogos[celula][4] != "#" && matrizJogos[celula][5] != "#"&& matrizJogos[celula][6] != "#" && matrizJogos[celula][7] != "#" && matrizJogos[celula][8] != "#" && matrizJogos[celula][9] != "#"){
+    console.log("empatou")
+    desbloquearCelulas(celula);
+    padraoBlockCelulas[celula] = "visible";
+    matrizGeral[celula] = "";
+    desbloquearCelulas(celula);
+  }
+
+
+  if (
+    (matrizJogos[celula][1] == playerAtual && matrizJogos[celula][2] == playerAtual && matrizJogos[celula][3] == playerAtual) ||
+    (matrizJogos[celula][4] == playerAtual && matrizJogos[celula][5] == playerAtual && matrizJogos[celula][6] == playerAtual) ||
+    (matrizJogos[celula][7] == playerAtual && matrizJogos[celula][8] == playerAtual && matrizJogos[celula][9] == playerAtual) ||
+    (matrizJogos[celula][1] == playerAtual && matrizJogos[celula][4] == playerAtual && matrizJogos[celula][7] == playerAtual) ||
+    (matrizJogos[celula][2] == playerAtual && matrizJogos[celula][5] == playerAtual && matrizJogos[celula][8] == playerAtual) ||
+    (matrizJogos[celula][3] == playerAtual && matrizJogos[celula][6] == playerAtual && matrizJogos[celula][9] == playerAtual) ||
+    (matrizJogos[celula][1] == playerAtual && matrizJogos[celula][5] == playerAtual && matrizJogos[celula][9] == playerAtual) ||
+    (matrizJogos[celula][3] == playerAtual && matrizJogos[celula][5] == playerAtual && matrizJogos[celula][7] == playerAtual)
+  ) {
+    console.log("Ganhou " + playerAtual + " na célula " + celula);
+    bloquearBotoes(celula);
+    //desbloquearCelulas(celula);
+    padraoBlockCelulas[celula] = "visible";
+    matrizGeral[celula] = playerAtual;
+    desbloquearCelulas(celula);
+    document.getElementById("sombraCell" + celula).src = "img/" + playerAtual + ".png";
+
+
+  }
+  if (
+    (matrizGeral[1] == playerAtual && matrizGeral[2] == playerAtual && matrizGeral[3] == playerAtual) ||
+    (matrizGeral[4] == playerAtual && matrizGeral[5] == playerAtual && matrizGeral[6] == playerAtual) ||
+    (matrizGeral[7] == playerAtual && matrizGeral[8] == playerAtual && matrizGeral[9] == playerAtual) ||
+    (matrizGeral[1] == playerAtual && matrizGeral[4] == playerAtual && matrizGeral[7] == playerAtual) ||
+    (matrizGeral[2] == playerAtual && matrizGeral[5] == playerAtual && matrizGeral[8] == playerAtual) ||
+    (matrizGeral[3] == playerAtual && matrizGeral[6] == playerAtual && matrizGeral[9] == playerAtual) ||
+    (matrizGeral[1] == playerAtual && matrizGeral[5] == playerAtual && matrizGeral[9] == playerAtual) ||
+    (matrizGeral[3] == playerAtual && matrizGeral[5] == playerAtual && matrizGeral[7] == playerAtual)
+  ) {
+
+    alert("O "+playerAtual+" GANHOU!!!!")
+    
+  }
+
+}
+
+var padraoBlockCelulas = ["", "hidden","hidden","hidden","hidden","hidden","hidden","hidden","hidden","hidden"];
+
+function desbloquearCelulas(celula){
+    for (let j = 1; j <= 9; j++) {
+    document.getElementById("sombraCell"+j).style.visibility=padraoBlockCelulas[j];
+    console.log("desbloqueou celula"+ celula)
+    }
+}
+
+
+function bloquearBotoes(celula) {
+  for (let i = 1; i <= 9; i++) {
+    const button = document.getElementById("cell" + celula + "bt" + i);
+    button.disabled = true;
+    if (button.innerHTML === playerAtual) {
+      button.style.color = "green";
+    }
+  
+  }
+
+}
+
+
+
+function bloquearCelulas(celula){
+//sombraCell1
+if(padraoBlockCelulas[celula] == "visible"){
+return desbloquearCelulas(celula);
+}
+
+
+for (let i = 1; i <= 9; i++) {
+    document.getElementById("sombraCell"+i).style.visibility="visible";
+  }
+  //bloqueou tudo
+   if(padraoBlockCelulas[celula] == "hidden"){
+    document.getElementById("sombraCell"+celula).style.visibility="hidden";
+   }
+   //vrificar se o que eu joguei esta com desbloqueio, se sim ele desbloqueia, se não ele desbloqueia tudo que esteja com hidden
+   else{
+    for (let j = 1; j <= 9; j++) {
+    document.getElementById("sombraCell"+celula).style.visibility=padraoBlockCelulas[j];
+    }
+   }
+
+}
+
+
+    function jogar(celula,botão){
+       console.log("jogou a celula "+ celula+" e o botão "+botão)
+      document.getElementById("cell"+celula+"bt"+botão).disabled = true;
+      document.getElementById("cell"+celula+"bt"+botão).innerText = playerAtual;
+      matrizJogos[celula][botão] = playerAtual;
+console.log(matrizJogos[celula][botão]);
+
+bloquearCelulas(botão);
+ganhouCelula(celula);
+
+playerAtual = playerAtual === 'X' ? 'O' : 'X';
+document.getElementById("playershow").textContent = playerAtual;
+    }
+
+
+
+</script>
+</html>
